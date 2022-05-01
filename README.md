@@ -1,1 +1,1 @@
-## graphic group project using pyopengl
+## graphics group project using pyopengl
