@@ -1,7 +1,9 @@
+import math
 from tkinter import *  # from tkinter module import all classes
 import pygame  # import a pygame class
 from OpenGL.GL import *  # from python opengl.gl module import all classes
 from OpenGL.GLU import *  # from opengl.glu module import all classes
+from OpenGL.raw.GLUT import glutSolidSphere, glutSolidCube, glutSwapBuffers
 from pygame.locals import *  # from pygame.locals import all class
 
 """ Init function initialize the pygame display window with width, height and colors
@@ -12,12 +14,10 @@ def init():
     pygame.init()
     display = (900, 600)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
-    glClearColor(0.0, 0.0, 0.0, 0.0);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0, 100, 0, 100);
-
-
+    glClearColor(0.0, 0.0, 0.0, 0.0)
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    gluOrtho2D(0, 100, 0, 100)
 def draw_house():
     """a"""
     glClear(GL_COLOR_BUFFER_BIT)
@@ -46,6 +46,15 @@ def draw_house():
     glVertex2d(55, 70)
     glVertex2d(0, 85)
     glEnd()
+    """sun"""
+    glColor3f(0.9601,0.956,0.502)
+    glBegin(GL_POLYGON)
+    for i in range(361):
+        angle = 2*math.pi*i/360
+        x = 20 + 3*math.cos(angle)
+        y = 85+ 3*math.sin(angle)
+        glVertex2d(x,y)
+    glEnd()
     """field"""
     glColor3f(0.0, 0.8, 0.2)
     glBegin(GL_POLYGON)
@@ -64,67 +73,38 @@ def draw_house():
     glEnd()
     """fence"""
     glColor3f(0.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLES)
-    glVertex2d(0, 10)
-    glVertex2d(2, 10)
+    glBegin(GL_POLYGON)
     glVertex2d(0, 17)
-    glEnd()
-    """fence"""
-    glColor3f(0.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLES)
-    glVertex2d(0, 10)
+    glVertex2d(2, 17)
     glVertex2d(2, 10)
-    glVertex2d(1, 17)
-    glEnd()
-    """fence"""
-    glColor3f(0.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLES)
     glVertex2d(0, 10)
-    glVertex2d(4, 10)
-    glVertex2d(1, 17)
     glEnd()
 
     """fence"""
     glColor3f(0.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLES)
-    glVertex2d(0, 10)
-    glVertex2d(6, 10)
-    glVertex2d(3, 17)
+    glBegin(GL_POLYGON)
+    a = 0
+    for i in range(21):
+
+        x = 2
+        a +=x
+        glVertex2d(0 +a, 17)
+        glVertex2d(2 +a, 17)
+        glVertex2d(2 +a, 10)
+        glVertex2d(0 +a, 10)
+
     glEnd()
     """fence"""
     glColor3f(0.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLES)
-    glVertex2d(2, 10)
-    glVertex2d(8, 10)
-    glVertex2d(5, 17)
-    glEnd()
-    """fence"""
-    glColor3f(0.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLES)
-    glVertex2d(4, 10)
-    glVertex2d(10, 10)
-    glVertex2d(7, 17)
-    glEnd()
-    """fence"""
-    glColor3f(0.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLES)
-    glVertex2d(6, 10)
-    glVertex2d(12, 10)
-    glVertex2d(9, 17)
-    glEnd()
-    """fence"""
-    glColor3f(0.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLES)
-    glVertex2d(8, 10)
-    glVertex2d(14, 10)
-    glVertex2d(11, 17)
-    glEnd()
-    """fence"""
-    glColor3f(0.0, 0.0, 0.0)
-    glBegin(GL_TRIANGLES)
-    glVertex2d(10, 10)
-    glVertex2d(16, 10)
-    glVertex2d(13, 17)
+    glBegin(GL_POLYGON)
+    for i in range(21):
+        x = 2
+        a += x
+        glVertex2d(18 + a, 17)
+        glVertex2d(20 + a, 17)
+        glVertex2d(20 + a, 10)
+        glVertex2d(18 + a, 10)
+
     glEnd()
 
     """bush"""
@@ -147,6 +127,35 @@ def draw_house():
     glVertex2d(43, 60)
     glVertex2d(49, 60)
     glVertex2d(46, 62)
+    glEnd()
+    """flag"""
+    glColor3f(0.04, .93, 0.04)
+    glBegin(GL_POLYGON)
+    glVertex2d(15, 55)
+    glVertex2d(25, 55)
+    glVertex2d(25, 53)
+    glVertex2d(15, 53)
+    glEnd()
+    glColor3f(1.0, 1.0, 0.0)
+    glBegin(GL_POLYGON)
+    glVertex2d(15, 53)
+    glVertex2d(25, 53)
+    glVertex2d(25, 51)
+    glVertex2d(15, 51)
+    glEnd()
+    glColor3f(1.0, 0.0, 0.0)
+    glBegin(GL_POLYGON)
+    glVertex2d(15, 51)
+    glVertex2d(25, 51)
+    glVertex2d(25, 49)
+    glVertex2d(15, 49)
+    glEnd()
+    glColor3f(0.0, 0.0, 0.0)
+    glBegin(GL_POLYGON)
+    glVertex2d(15, 49)
+    glVertex2d(16, 49)
+    glVertex2d(16, 30)
+    glVertex2d(15, 30)
     glEnd()
 
     """h1r1"""
