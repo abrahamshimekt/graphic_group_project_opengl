@@ -43,7 +43,7 @@ def draw_sun():
 
 def draw_fence():
     """fence"""
-    glColor3f(0.0, 0.0, 0.0)
+    glColor3f(0.2, 0.2, 0.2)
     glBegin(GL_POLYGON)
     glVertex2d(0, 17)
     glVertex2d(2, 17)
@@ -52,10 +52,10 @@ def draw_fence():
     glEnd()
 
     """fence"""
-    glColor3f(0.0, 0.0, 0.0)
+    glColor3f(0.2, 0.2, 0.2)
     glBegin(GL_POLYGON)
     a = 0
-    for i in range(21):
+    for i in range(25):
         x = 2
         a += x
         glVertex2d(0 + a, 17)
@@ -65,15 +65,15 @@ def draw_fence():
 
     glEnd()
     """fence"""
-    glColor3f(0.0, 0.0, 0.0)
+    glColor3f(0.2, 0.2, 0.2)
     glBegin(GL_POLYGON)
     for i in range(21):
         x = 2
         a += x
-        glVertex2d(18 + a, 17)
-        glVertex2d(20 + a, 17)
-        glVertex2d(20 + a, 10)
-        glVertex2d(18 + a, 10)
+        glVertex2d(10 + a, 17)
+        glVertex2d(12 + a, 17)
+        glVertex2d(12 + a, 10)
+        glVertex2d(10 + a, 10)
 
     glEnd()
 
@@ -100,7 +100,62 @@ def draw_bushes():
     glVertex2d(49, 60)
     glVertex2d(46, 62)
     glEnd()
-
+    """bush"""
+    glColor3f(0.0, 0.6, 0.0)
+    glBegin(GL_TRIANGLES)
+    glVertex2d(43, 10)
+    glVertex2d(49, 10)
+    glVertex2d(46, 12)
+    glEnd()
+    """bush"""
+    glColor3f(0.0, 0.6, 0.0)
+    glBegin(GL_TRIANGLES)
+    glVertex2d(40, 10)
+    glVertex2d(46, 10)
+    glVertex2d(43, 12)
+    glEnd()
+    """bush"""
+    glColor3f(0.0, 0.6, 0.0)
+    glBegin(GL_TRIANGLES)
+    glVertex2d(13, 10)
+    glVertex2d(19, 10)
+    glVertex2d(16, 12)
+    glEnd()
+    """bush"""
+    glColor3f(0.0, 0.6, 0.0)
+    glBegin(GL_TRIANGLES)
+    glVertex2d(10, 10)
+    glVertex2d(16, 10)
+    glVertex2d(13, 12)
+    glEnd()
+    """bush"""
+    glColor3f(0.0, 0.6, 0.0)
+    glBegin(GL_TRIANGLES)
+    glVertex2d(66, 10)
+    glVertex2d(72, 10)
+    glVertex2d(69, 12)
+    glEnd()
+    """bush"""
+    glColor3f(0.0, 0.6, 0.0)
+    glBegin(GL_TRIANGLES)
+    glVertex2d(69, 10)
+    glVertex2d(75, 10)
+    glVertex2d(72, 12)
+    glEnd()
+    """bush"""
+    glColor3f(0.0, 0.6, 0.0)
+    glBegin(GL_TRIANGLES)
+    glVertex2d(89, 10)
+    glVertex2d(95, 10)
+    glVertex2d(92, 12)
+    glEnd()
+    """bush"""
+    glColor3f(0.0, 0.6, 0.0)
+    glBegin(GL_TRIANGLES)
+    glVertex2d(92, 10)
+    glVertex2d(98, 10)
+    glVertex2d(95, 12)
+    glEnd()
 
 def draw_flag():
     """green"""
@@ -216,7 +271,7 @@ def draw_tree():
     glVertex2d(90, 63)
     glVertex2d(92, 63)
     glEnd()
-    """trunck"""
+    """trunk"""
     glColor3f(0.5, 0.0, 0.1)
     glBegin(GL_POLYGON)
     glVertex2d(90, 53)
@@ -246,9 +301,7 @@ def draw_road():
     glVertex2d(100, 10)
     glVertex2d(0, 10)
     glEnd()
-    draw_fence()
-    draw_bushes()
-    draw_flag()
+
 
 
 def draw_field():
