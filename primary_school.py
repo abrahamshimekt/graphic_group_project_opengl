@@ -1,12 +1,17 @@
+import datetime
 import math
 import pygame  # import a pygame class
 from OpenGL.GL import *  # from python opengl.gl module import all classes
 from OpenGL.GLU import *  # from opengl.glu module import all classes
+from OpenGL.GLUT import *
 from pygame.locals import *  # from pygame.locals import all class
+from datetime import datetime
 
 """ Init function initialize the pygame display window with width, height and colors
 """
 
+
+current_time = datetime.now().hour
 
 def init():
     pygame.init()
@@ -31,6 +36,7 @@ def draw_sky():
 
 def draw_sun():
     """sun"""
+
     glColor3f(0.9601, 0.956, 0.502)
     glBegin(GL_POLYGON)
     for i in range(361):
@@ -39,6 +45,7 @@ def draw_sun():
         y = 85 + 3 * math.sin(angle)
         glVertex2d(x, y)
     glEnd()
+
 
 
 def draw_fence():
@@ -156,6 +163,7 @@ def draw_bushes():
     glVertex2d(98, 10)
     glVertex2d(95, 12)
     glEnd()
+
 
 def draw_flag():
     """green"""
@@ -294,14 +302,33 @@ def draw_tree():
 
 def draw_road():
     """road"""
-    glColor3f(0.4, 0.0, 0.0)
+    glColor3f(0.6, 0.6, 0.6)
     glBegin(GL_POLYGON)
-    glVertex2d(0, 5)
-    glVertex2d(100, 5)
+    glVertex2d(0, 3)
+    glVertex2d(100, 3)
     glVertex2d(100, 10)
     glVertex2d(0, 10)
     glEnd()
-
+    glColor3f(0.4, 0.4, 0.0)
+    glLineWidth(5)
+    glBegin(GL_LINES)
+    glVertex2f(0, 10)
+    glVertex2f(100, 10)
+    glEnd()
+    glColor3f(0.4, 0.4, 0.0)
+    glLineWidth(5)
+    glBegin(GL_LINES)
+    glVertex2f(0, 3)
+    glVertex2f(100, 3)
+    glEnd()
+    glEnable(GL_LINE_STIPPLE)
+    glLineStipple(3, 0x00ff)
+    glBegin(GL_LINES)
+    glColor3f(1, 1, 1)
+    glVertex2f(0, 6.5)
+    glVertex2f(100, 6.5)
+    glEnd()
+    glDisable(GL_LINE_STIPPLE)
 
 
 def draw_field():
@@ -669,6 +696,7 @@ def draw():
     draw_house()
     draw_bushes()
     draw_tree()
+
     glFlush()
 
 
