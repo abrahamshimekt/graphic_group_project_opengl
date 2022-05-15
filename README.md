@@ -1,6 +1,6 @@
 # primary School 
 ## project Specification: 
-** project Specification: **
+** project Components: **
 - Classrooms
 - Trees
 - Nearby mountain
@@ -11,5 +11,10 @@
 - Ethiopian National Flag
 - Fence
 - Cars
+** used Technologies: **
+- PyOpenGL
+- Pygame
+- Numpy
+
 
      
