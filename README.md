@@ -7,7 +7,6 @@
 - Sun 
 - bushes
 - roads
-- children
 - Ethiopian National Flag
 - Fence
 - Cars
