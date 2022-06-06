@@ -6,11 +6,11 @@ The Primary School project is a PyOpenGL project that uses object file modeled b
 - roads
 - Ethiopian National Flag
 - Fence
-** used Technologies: **
-- PyOpenGL
-- Pygame
-- Numpy
-- blender
+## The project has used the following Technologies
+- PyOpenGL - used to draw the 3D model in the given pygame window
+- Pygame - used for windowing
+- Numpy - used to generate Matrix
+- blender - used to model the 3D object file
 
 
      
