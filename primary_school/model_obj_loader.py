@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class ObjLoader:
     buffer = []
 
@@ -11,27 +12,25 @@ class ObjLoader:
             if data_type == 'float':
                 coordinates.append(float(d))
             elif data_type == 'int':
-                coordinates.append(int(d)-1)
+                coordinates.append(int(d) - 1)
 
-
-    @staticmethod # sorted vertex buffer for use with glDrawArrays function
+    @staticmethod  # sorted vertex buffer for use with glDrawArrays function
     def create_sorted_vertex_buffer(indices_data, vertices, textures, normals):
         for i, ind in enumerate(indices_data):
-            if i % 3 == 0: # sort the vertex coordinates
+            if i % 3 == 0:  # sort the vertex coordinates
                 start = ind * 3
                 end = start + 3
                 ObjLoader.buffer.extend(vertices[start:end])
-            elif i % 3 == 1: # sort the texture coordinates
+            elif i % 3 == 1:  # sort the texture coordinates
                 start = ind * 2
                 end = start + 2
                 ObjLoader.buffer.extend(textures[start:end])
-            elif i % 3 == 2: # sort the normal vectors
+            elif i % 3 == 2:  # sort the normal vectors
                 start = ind * 3
                 end = start + 3
                 ObjLoader.buffer.extend(normals[start:end])
 
-
-    @staticmethod # TODO unsorted vertex buffer for use with glDrawElements function
+    @staticmethod  # TODO unsorted vertex buffer for use with glDrawElements function
     def create_unsorted_vertex_buffer(indices_data, vertices, textures, normals):
         num_verts = len(vertices) // 3
 
@@ -52,24 +51,21 @@ class ObjLoader:
 
                     break
 
-
     @staticmethod
     def show_buffer_data(buffer):
-        for i in range(len(buffer)//8):
+        for i in range(len(buffer) // 8):
             start = i * 8
             end = start + 8
             print(buffer[start:end])
 
-
     @staticmethod
     def load_model(file, sorted=True):
-        vert_coords = [] # will contain all the vertex coordinates
-        tex_coords = [] # will contain all the texture coordinates
-        norm_coords = [] # will contain all the vertex normals
+        vert_coords = []  # will contain all the vertex coordinates
+        tex_coords = []  # will contain all the texture coordinates
+        norm_coords = []  # will contain all the vertex normals
 
-        all_indices = [] # will contain all the vertex, texture and normal indices
-        indices = [] # will contain the indices for indexed drawing
-
+        all_indices = []  # will contain all the vertex, texture and normal indices
+        indices = []  # will contain the indices for indexed drawing
 
         with open(file, 'r') as f:
             line = f.readline()
@@ -85,7 +81,7 @@ class ObjLoader:
                     for value in values[1:]:
                         val = value.split('/')
                         ObjLoader.search_data(val, all_indices, 'f', 'int')
-                        indices.append(int(val[0])-1)
+                        indices.append(int(val[0]) - 1)
 
                 line = f.readline()
 
@@ -98,7 +94,7 @@ class ObjLoader:
 
         # ObjLoader.show_buffer_data(ObjLoader.buffer)
 
-        buffer = ObjLoader.buffer.copy() # create a local copy of the buffer list, otherwise it will overwrite the static field buffer
-        ObjLoader.buffer = [] # after copy, make sure to set it back to an empty list
+        buffer = ObjLoader.buffer.copy()  # create a local copy of the buffer list, otherwise it will overwrite the static field buffer
+        ObjLoader.buffer = []  # after copy, make sure to set it back to an empty list
 
         return np.array(indices, dtype='uint32'), np.array(buffer, dtype='float32')
